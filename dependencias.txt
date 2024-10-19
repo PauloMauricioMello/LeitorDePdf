@@ -1,0 +1,63 @@
+Dependências:
+
+TESSERACT
+
+> Baixar o tesseract
+https://github.com/UB-Mannheim/tesseract/wiki
+
+> Baixar o arquivo por.traineddata (para linguagem pt-BR)
+https://github.com/tesseract-ocr/tessdata/blob/main/por.traineddata
+
+- colocar o arquivo baixado na pasta tessdata dentro de Tesseract-OCR
+(C:\Program Files\Tesseract-OCR\tessdata)
+
+> Instalar o pytesseract
+python -m pip install pytesseract
+
+> Utilizar o caminho em todo arquivo que import o tesseract
+caminho_tesseract = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = caminho_tesseract
+
+
+PDF2IMAGE
+
+> Baixar o pdf2image
+python -m pip install pdf2image
+
+Biblioteca:
+https://github.com/Belval/pdf2image?tab=readme-ov-file
+
+Stackoverflow:
+https://stackoverflow.com/questions/53481088/poppler-in-path-for-pdf2image
+
+> Baixar o Poppler
+https://github.com/oschwartz10612/poppler-windows/releases/
+
+- Extraia os arquivos em algum local acessível
+(ex: C:\Program Files\Poppler\poppler-24.08.0)
+
+- Informe o path da pasta bin ao fazer chamadas de funções
+
+ex:
+
+from pdf2image import convert_from_path
+images = convert_from_path("mypdf.pdf", poppler_path=r'C:\Program Files\Poppler\poppler-24.08.0\Library\bin')
+for i, image in enumerate(images):
+    fname = 'image'+str(i)+'.png'
+    image.save(fname, "PNG")
+
+-> pdf2image é apenas um wrapper para o poppler. Para usar o módulo, você precisa ter o poppler-utils instalado na sua máquina e no seu caminho.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
